@@ -1,0 +1,26 @@
+{
+  "name": "fluxor",
+  "version": "1.0.0",
+  "description": "Demo app for flux and modular JS applications",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ./public",
+    "livereload": "livereload ./public",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "node-sass --output-style compressed -o public/css src/css/app.scss app.css",
+    "build:js": "browserify src/js/app.js | uglifyjs -c -m > public/js/bundle.min.js",
+    "watch:js": "watchify src/js/app.js -o public/js/bundle.js --debug",
+    "watch:css": "node-sass -w src/css/app.scss --output-style compressed -o public/css src/css/app.scss",
+    "watch": "npm run watch:css & npm run watch:js & npm run livereload & npm run start"
+  },
+  "author": "Keith Bingman",
+  "license": "MIT",
+  "dependencies": {
+    "hogan": "^3.0.2",
+    "hoganify": "^0.2.0",
+    "node-sass": "^2.1.1",
+    "serve": "^1.4.0",
+    "uglify": "^0.1.3"
+  }
+}
